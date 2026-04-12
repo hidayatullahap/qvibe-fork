@@ -55,3 +55,11 @@ export const posts = sqliteTable("posts", {
   category: text("category").notNull(),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
 });
+
+export const visitors = sqliteTable("visitors", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").references(() => user.id),
+  ipAddress: text("ip_address"),
+  userAgent: text("user_agent"),
+  accessedAt: integer("accessed_at", { mode: "timestamp" }).notNull().$defaultFn(() => new Date()),
+});
