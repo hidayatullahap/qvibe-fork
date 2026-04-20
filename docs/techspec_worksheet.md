@@ -36,7 +36,8 @@ We will introduce two new tables in `src/db/schema.ts`:
 
 ### 4.3. Worksheet Listing (`src/app/worksheet/[id]/page.tsx`)
 - Server component that fetches worksheets for the given category.
-- Renders embedded iframes for each Google Drive URL, displaying the `title` above or alongside the iframe.
+- Renders worksheets in a **2-column grid layout** (on desktop) to match the "materi" video listing style.
+- Each card contains the `title`, an embedded iframe, and a download button.
 - **URL Transformation:** Transform standard Drive URLs (`https://drive.google.com/file/d/ID/view`) to embed URLs (`https://drive.google.com/file/d/ID/preview`) before passing to the `<iframe>`.
 
 ### 4.4. Admin Management UI (`src/app/add-worksheet/page.tsx` or similar admin route)

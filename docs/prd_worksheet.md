@@ -33,8 +33,8 @@ The "Worksheet" feature introduces a new section to the application designed to 
 ### 4.4. User Flow
 1. **Homepage:** User clicks the "Worksheet" card.
 2. **Category Page:** User is presented with a list of available worksheet categories.
-3. **Worksheet List Page:** Upon selecting a category, the user sees a list of available worksheets within that category, identified by their titles.
-4. **Worksheet View Page:** Clicking a specific worksheet displays an embedded view of the Google Drive PDF along with a prominent download button.
+3. **Worksheet List Page:** Upon selecting a category, the user sees a list of available worksheets within that category, displayed in a 2-column grid layout for better visibility.
+4. **Worksheet View Page:** Each worksheet card displays the title, an embedded preview of the Google Drive PDF, and a download button.
 
 ## 5. Non-Goals / Out of Scope
 - Handling Google Drive permission edge cases (e.g., automatically requesting access or verifying public visibility) is currently out of scope and deferred to future iterations.
