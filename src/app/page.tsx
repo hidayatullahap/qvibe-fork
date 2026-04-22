@@ -100,7 +100,7 @@ function LandingPage() {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:row gap-6 justify-center mt-16">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mt-16">
           <Link 
             href="/login" 
             className="px-12 py-5 bg-primary text-white font-black rounded-2xl text-2xl hover:bg-primary/90 transition-all shadow-[0_10px_0_0_rgba(0,0,0,0.1)] hover:translate-y-1 hover:shadow-none"

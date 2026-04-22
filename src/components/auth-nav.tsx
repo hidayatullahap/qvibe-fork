@@ -7,10 +7,10 @@ export function AuthNav({ session }: { session: { user: { name: string, role: st
     const handleSignOut = async () => {
         try {
             await authClient.signOut();
-            window.location.href = "/login";
+            window.location.href = "/";
         } catch (error) {
             console.error("Logout error", error);
-            window.location.href = "/login";
+            window.location.href = "/";
         }
     };
 
