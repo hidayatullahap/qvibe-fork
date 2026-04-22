@@ -25,13 +25,25 @@ export default async function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-          Edukasi Islami Terpercaya
+      <div className="text-center mb-16 space-y-6">
+        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-black">
+          Q-VIBE
         </h1>
-        <p className="mt-4 text-xl text-gray-500">
-          Pilih kategori untuk mulai belajar dari video pilihan.
+        
+        <p className="max-w-4xl mx-auto text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+          Platform edukasi terintegrasi yang menyajikan video pembelajaran agama, dongeng anak, 
+          dan berbagai worksheet interaktif siap cetak untuk mendukung belajar mandiri yang 
+          efektif, kreatif, inovatif dan menyenangkan.
         </p>
+
+        <div className="pt-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Edukasi Islam Terpercaya
+          </h2>
+          <p className="mt-4 text-lg text-gray-500 italic">
+            Pilih kategori untuk mulai belajar dari video dan worksheet pilihan.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
