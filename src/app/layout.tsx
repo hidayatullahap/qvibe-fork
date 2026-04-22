@@ -31,19 +31,21 @@ export default async function RootLayout({
   return (
     <html lang="id">
       <body className={inter.className}>
-        <nav className="border-b bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-20 items-center">
-              <div className="flex items-center gap-8">
-                <div className="flex-shrink-0 flex flex-col">
-                  <Link href="/" className="text-2xl font-bold text-primary leading-tight">Q-Vibe</Link>
-                  <span className="text-[10px] text-gray-500 font-medium leading-tight">Quranic-Video, Interaktif, Belajar, Efektif</span>
+        {session && (
+          <nav className="border-b bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex justify-between h-20 items-center">
+                <div className="flex items-center gap-8">
+                  <div className="flex-shrink-0 flex flex-col">
+                    <Link href="/" className="text-2xl font-bold text-primary leading-tight">Q-Vibe</Link>
+                    <span className="text-[10px] text-gray-500 font-medium leading-tight">Quranic-Video, Interaktif, Belajar, Efektif</span>
+                  </div>
                 </div>
+                <AuthNav session={session} />
               </div>
-              <AuthNav session={session} />
             </div>
-          </div>
-        </nav>
+          </nav>
+        )}
         <main>{children}</main>
       </body>
     </html>

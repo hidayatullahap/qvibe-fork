@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { LayoutPanelLeft } from "lucide-react";
 
 const categories = [
   { name: "Materi Alquran dan Ilmu tajwid", slug: "materi-alquran-dan-ilmu-tajwid", icon: "📖" },
@@ -11,7 +14,15 @@ const categories = [
   { name: "Materi tarikh", slug: "materi-tarikh", icon: "⏳" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    return <LandingPage />;
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
@@ -57,6 +68,52 @@ export default function Home() {
             </div>
           </Link>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function LandingPage() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#5c67f2] via-[#7d5cf2] to-[#22c55e] text-[#1a1a1a] p-4 relative overflow-hidden">
+      {/* Network Background Pattern */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+        <div className="absolute -top-20 -left-20 text-white/40">
+          <LayoutPanelLeft size={400} strokeWidth={0.5} />
+        </div>
+      </div>
+
+      {/* Circle/Blob in the background */}
+      <div className="absolute top-[10%] left-[10%] w-[40%] h-[60%] bg-white/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="z-10 text-center max-w-5xl mx-auto space-y-12">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">
+          Selamat Datang di Aplikasi
+        </h2>
+        
+        <h1 className="text-8xl md:text-[12rem] font-black leading-none tracking-tighter mb-4 text-black">
+          Q- VIBE
+        </h1>
+        
+        <p className="text-xl md:text-4xl font-bold text-gray-800 italic mt-8">
+          "Tumbuh Cerdas dengan Ilmu, Dongeng, dan Worksheet Kreatif"
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:row gap-6 justify-center mt-16">
+          <Link 
+            href="/login" 
+            className="px-12 py-5 bg-primary text-white font-black rounded-2xl text-2xl hover:bg-primary/90 transition-all shadow-[0_10px_0_0_rgba(0,0,0,0.1)] hover:translate-y-1 hover:shadow-none"
+          >
+            Masuk (Login)
+          </Link>
+          <Link 
+            href="/register" 
+            className="px-12 py-5 bg-white text-primary font-black rounded-2xl text-2xl hover:bg-gray-50 transition-all shadow-[0_10px_0_0_rgba(0,0,0,0.1)] hover:translate-y-1 hover:shadow-none border-2 border-primary/10"
+          >
+            Daftar (Register)
+          </Link>
+        </div>
       </div>
     </div>
   );
