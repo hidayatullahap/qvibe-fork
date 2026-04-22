@@ -7,19 +7,19 @@ export function AuthNav({ session }: { session: { user: { name: string, role: st
     const handleSignOut = async () => {
         try {
             await authClient.signOut();
-            window.location.href = "/login";
+            window.location.href = "/";
         } catch (error) {
             console.error("Logout error", error);
-            window.location.href = "/login";
+            window.location.href = "/";
         }
     };
 
     if (session) {
         return (
             <div className="flex items-center gap-4">
+                <a href="/pengunjung" className="text-sm font-medium text-primary hover:underline">Daftar Pengunjung</a>
                 {session.user.role === 'admin' && (
                     <>
-                        <a href="/pengunjung" className="text-sm font-medium text-primary hover:underline">Daftar Pengunjung</a>
                         <a href="/add-worksheet" className="text-sm font-medium text-primary hover:underline">Kelola Worksheet</a>
                         <a href="/register" className="text-sm font-medium text-primary hover:underline">Daftar Akun</a>
                     </>
