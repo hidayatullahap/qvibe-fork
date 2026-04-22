@@ -87,20 +87,30 @@ function LandingPage() {
       <div className="absolute top-[10%] left-[10%] w-[40%] h-[60%] bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="z-10 text-center max-w-5xl mx-auto space-y-12">
-        <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight animate-fade-in-up opacity-0">
           Selamat Datang di Aplikasi
         </h2>
         
-        <h1 className="text-8xl md:text-[12rem] font-black leading-none tracking-tighter mb-4 text-black">
-          Q- VIBE
+        <h1 className="text-8xl md:text-[12rem] font-black leading-none tracking-tighter mb-4 text-black flex justify-center">
+          {"Q- VIBE".split("").map((char, i) => (
+            <span 
+              key={i} 
+              className={`inline-block animate-jump ${char === " " ? "w-[0.3em]" : ""}`}
+              style={{ animationDelay: `${i * 150}ms` }}
+            >
+              {char}
+            </span>
+          ))}
         </h1>
-        
-        <p className="text-xl md:text-4xl font-bold text-gray-800 italic mt-8">
-          "Tumbuh Cerdas dengan Ilmu, Dongeng, dan Worksheet Kreatif"
-        </p>
+
+        <div className="animate-fade-in-up opacity-0 [animation-delay:400ms] mt-8">
+          <p className="text-xl md:text-4xl font-bold text-gray-800 italic">
+            "Tumbuh Cerdas dengan Ilmu, Dongeng, dan Worksheet Kreatif"
+          </p>
+        </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center mt-16">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center mt-16 animate-fade-in-up opacity-0 [animation-delay:600ms]">
           <Link 
             href="/login" 
             className="px-12 py-5 bg-primary text-white font-black rounded-2xl text-2xl hover:bg-primary/90 transition-all shadow-[0_10px_0_0_rgba(0,0,0,0.1)] hover:translate-y-1 hover:shadow-none"
