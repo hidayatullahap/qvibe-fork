@@ -14,6 +14,19 @@ const categories = [
   { name: "Materi tarikh", slug: "materi-tarikh", icon: "⏳" },
 ];
 
+const backgroundImages = [
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800&auto=format&fit=crop", // Learning
+  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop", // Books
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop", // School
+  "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=800&auto=format&fit=crop", // Kids playing
+  "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop", // Yoga/Peace
+  "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=800&auto=format&fit=crop", // Study
+  "https://images.unsplash.com/photo-1491843351663-8cb898682417?q=80&w=800&auto=format&fit=crop", // Library
+  "https://images.unsplash.com/photo-1510172951991-856a654063f9?q=80&w=800&auto=format&fit=crop", // Reading
+  "https://images.unsplash.com/photo-1472162072942-cd5173781a27?q=80&w=800&auto=format&fit=crop", // Kids art
+  "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=800&auto=format&fit=crop", // Drawing
+];
+
 export default async function Home() {
   const session = await auth.api.getSession({
     headers: await headers(),
@@ -49,34 +62,43 @@ export default async function Home() {
       <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
         <Link
           href="/worksheet"
-          className="group relative bg-white border rounded-2xl p-6 hover:shadow-lg transition-shadow border-primary/50"
+          className="group relative overflow-hidden rounded-2xl h-64 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-primary/20"
         >
-          <div className="text-4xl mb-4">📝</div>
-          <h3 className="text-lg font-semibold text-gray-900">
-            Worksheet
-          </h3>
-          <p className="mt-2 text-sm text-gray-500">
-            Download materi belajar dan lembar kerja PDF
-          </p>
-          <div className="mt-4 flex items-center text-sm font-medium text-primary group-hover:underline">
-            Jelajahi Sekarang &rarr;
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+            style={{ backgroundImage: `url(${backgroundImages[0]})` }}
+          />
+          <div className="absolute inset-0 bg-black/70 group-hover:bg-black/60 transition-colors" />
+          <div className="relative h-full p-8 flex flex-col justify-end text-white">
+            <div className="text-4xl mb-4">📝</div>
+            <h3 className="text-2xl font-bold drop-shadow-md">
+              Worksheet
+            </h3>
+            <p className="mt-2 text-sm text-gray-100 line-clamp-2 drop-shadow-md font-medium">
+              Download materi belajar dan lembar kerja PDF
+            </p>
           </div>
         </Link>
-        {categories.map((category) => (
+
+        {categories.map((category, index) => (
           <Link
             key={category.slug}
             href={`/kategori/${category.slug}`}
-            className="group relative bg-white border rounded-2xl p-6 hover:shadow-lg transition-shadow"
+            className="group relative overflow-hidden rounded-2xl h-64 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200"
           >
-            <div className="text-4xl mb-4">{category.icon}</div>
-            <h3 className="text-lg font-semibold text-gray-900">
-              {category.name}
-            </h3>
-            <p className="mt-2 text-sm text-gray-500">
-              Lihat koleksi video {category.name.toLowerCase()}
-            </p>
-            <div className="mt-4 flex items-center text-sm font-medium text-primary group-hover:underline">
-              Jelajahi Sekarang &rarr;
+            <div 
+              className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+              style={{ backgroundImage: `url(${backgroundImages[(index + 1) % backgroundImages.length]})` }}
+            />
+            <div className="absolute inset-0 bg-black/70 group-hover:bg-black/60 transition-colors" />
+            <div className="relative h-full p-8 flex flex-col justify-end text-white">
+              <div className="text-4xl mb-4">{category.icon}</div>
+              <h3 className="text-2xl font-bold drop-shadow-md">
+                {category.name}
+              </h3>
+              <p className="mt-2 text-sm text-gray-100 line-clamp-2 drop-shadow-md font-medium">
+                Lihat koleksi video {category.name.toLowerCase()}
+              </p>
             </div>
           </Link>
         ))}

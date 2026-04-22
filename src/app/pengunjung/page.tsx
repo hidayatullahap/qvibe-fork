@@ -12,7 +12,7 @@ export default async function VisitorsPage() {
     headers: await headers(),
   });
 
-  if (!session || (session.user as unknown as { role: string }).role !== 'admin') {
+  if (!session) {
     redirect("/");
   }
 
